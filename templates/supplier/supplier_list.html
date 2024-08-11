@@ -1,0 +1,35 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+
+<div class="card mt-4">
+    <div class="card-header">
+        Supplier List
+    </div>
+    <div class="card-body">
+        <table class="table">
+            <tr>
+                <th>ID</th>
+                <th>Is Manufactural</th>
+                <th>Supplier Name</th>
+                <th>Supplier Phone</th>
+            </tr>
+            {% for supplier in suppliers %}
+            <tr>
+                    <td>{{ supplier.id }} </td>
+                    <td>{{ supplier.is_manufactural }} </td>
+                    <td>{{ supplier.supplier_name }} </td>
+                    <td>{{ supplier.supplier_phone }} </td>
+
+            </tr>
+            {% endfor %}
+
+        </table>
+    </div>
+</div>
+
+
+
+
+{% endblock %}
+
