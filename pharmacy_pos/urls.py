@@ -19,7 +19,7 @@ from django.contrib import admin
 from django.shortcuts import render
 from django.urls import path
 from django.conf import settings
-from supplier.views import supplier_list
+from supplier.views import supplier_list, create_supplier
 
 
 def dashboard(request):
@@ -29,5 +29,6 @@ def dashboard(request):
 urlpatterns = [
     path("admin/", admin.site.urls),
     path('dashboard', dashboard, name='home'),
-    path('suppliers', supplier_list, name='supplier-list')
+    path('suppliers', supplier_list, name='supplier-list'),
+    path('suppliers/create', create_supplier, name='create-supplier'),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

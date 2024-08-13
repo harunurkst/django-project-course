@@ -1,0 +1,18 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+
+<div class="card mt-4">
+    <div class="card-header">
+        Create Supplier
+    </div>
+    <div class="card-body">
+        <form method="post" action="">
+            {% csrf_token %}
+            {{ supplier_form }}
+            <input type="submit" value="Submit">
+        </form>
+
+    </div>
+</div>
+{% endblock %}
