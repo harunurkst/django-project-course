@@ -18,9 +18,14 @@
             {% for supplier in suppliers %}
             <tr>
                     <td>{{ supplier.id }} </td>
-                    <td>{{ supplier.is_manufactural }} </td>
+                    {% if supplier.is_manufactural %}
+                        <td>Yes</td>
+                    {% else %}
+                        <td>No</td>
+                    {% endif %}
                     <td>{{ supplier.supplier_name }} </td>
                     <td>{{ supplier.supplier_phone }} </td>
+                    <td><a class="btn btn-danger" href="{% url 'delete-supplier' supplier.id  %}">Delete</a></td>
 
             </tr>
             {% endfor %}

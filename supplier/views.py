@@ -3,7 +3,6 @@ from supplier.models import Supplier
 from .forms import SupplierForm
 
 
-
 def supplier_list(request):
     form = SupplierForm()
     context = {
@@ -18,15 +17,7 @@ def create_supplier(request):
     if request.method == 'POST':
         form = SupplierForm(request.POST)
         if form.is_valid():
-            manufectural = form.cleaned_data['is_manufectural']
-            name = form.cleaned_data['supplier_name']
-            phone = form.cleaned_data['supplier_phone']
-
-            Supplier.objects.create(
-                is_manufactural=manufectural,
-                supplier_name=name,
-                supplier_phone=phone
-            )
+            form.save()
             return redirect('supplier-list')
 
     form = SupplierForm()
@@ -35,3 +26,9 @@ def create_supplier(request):
     }
 
     return render(request, 'supplier/create_supplier.html', context)
+
+
+def delete_supplier(request, supplier_id):
+    Supplier.objects.get(id=supplier_id).delete()
+    # delete
+    return redirect('supplier-list')

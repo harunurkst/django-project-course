@@ -1,7 +1,10 @@
 from django import forms
+from .models import Supplier
 
 
-class SupplierForm(forms.Form):
-    is_manufectural = forms.BooleanField(required=False)
-    supplier_name = forms.CharField()
-    supplier_phone = forms.CharField()
+class SupplierForm(forms.ModelForm):
+    class Meta:
+        model = Supplier
+        exclude = '__all__'
+
+
